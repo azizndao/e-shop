@@ -1,0 +1,136 @@
+.top-content {
+    padding: 0;
+    position: relative;
+}
+
+.menubar {
+    background-color: hsla(0, 0%, 0%, 0.2);
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.menu-list {
+    height: 56px;
+    max-width: 68rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    margin-inline: auto;
+    list-style: none;
+}
+
+.spacer {
+    width: 48px;
+}
+
+.menubar a {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.menubar a {
+    display: block;
+    padding: 0.65rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.65);
+
+    &:hover {
+        background-color: rgba(137, 43, 226, 0.05);
+    }
+}
+
+.carousel-slider {
+    /* margin-top: -56px; */
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow: hidden;
+}
+
+.slide img {
+    width: 100dvw;
+    height: 450px;
+    object-fit: contain;
+}
+
+main.container {
+    max-width: 64rem;
+    width: 100%;
+}
+
+.showcases {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.showcases > article {
+    flex: 1;
+    aspect-ratio: 16/9;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.showcases article img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* A bouncy button  */
+button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+}
+
+.article-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    padding: 1rem 0;
+}
+
+.article-grid a {
+    color: currentColor;
+    text-decoration: none;
+}
+
+.article {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.05), #ffffff);
+}
+
+.article img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.article h4 {
+    text-overflow: ellipsis;
+    /* white-space: nowrap; */
+    text-align: right;
+    padding-inline: 1rem;
+}
+
+.article .price {
+    color: orange;
+    font-weight: 400;
+    text-align: right;
+    padding-inline: 1rem;
+}

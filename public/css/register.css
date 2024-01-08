@@ -1,0 +1,38 @@
+.sign-up-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    width: min(100%, 512px);
+    background-color: white;
+    padding: 1.5rem 2rem 3rem;
+    margin: 3rem auto 0;
+
+    box-shadow: 0 0.35rem 1.55rem rgba(0, 0, 0, 0.15);
+    border-radius: 1.5rem;
+}
+
+.sign-up-form :where(.name, .secret) {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+
+    > .form-group {
+        flex: 1;
+    }
+}
+
+.sign-up-form h1 {
+    align-self: center;
+}
+
+button[type="submit"] {
+    margin-top: 1.5rem;
+    align-self: center;
+    width: 50%;
+}
+
+.input-error {
+    color: #ff3838;
+    font-weight: 600;
+    font-size: 0.7rem;
+}

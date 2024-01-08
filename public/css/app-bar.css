@@ -1,0 +1,31 @@
+.app-bar {
+    height: 64px;
+    width: 100%;
+    display: flex;
+    /* background-color: rebeccapurple; */
+
+    a {
+        color: currentColor;
+        text-decoration: none;
+        display: block;
+    }
+
+    .nav-bar {
+        max-width: 68rem;
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .logo {
+            font-weight: bold;
+        }
+
+        aside {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+    }
+}

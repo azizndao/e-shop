@@ -1,0 +1,61 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .main_wrapper {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    max-height: 70vh;
+    height: 100%;
+    gap: 2rem;
+}
+
+main .image {
+    flex: 6;
+    width: 100%;
+    border: 1px solid lightgrey;
+    overflow: hidden;
+}
+
+main .info {
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.image img {
+    height: 100%;
+    width: auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+}
+
+.info .buy-form {
+    display: flex;
+    justify-content: right;
+}
+
+.info .acheter {
+    width: 50%;
+    align-self: flex-end;
+}
+
+.acheter.danger {
+    background-color: var(--color-danger);
+    border: var(--color-danger);
+    color: var(--color-on-danger);
+}
+
+.info .separateur {
+    height: 1px;
+    background-color: rgba(105, 105, 105, 0.51);
+    width: 100%;
+}
+
+.info .price {
+    color: orange;
+}

@@ -1,0 +1,50 @@
+
+.article-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    padding: 1rem 0;
+}
+
+.article-grid a {
+    color: currentColor;
+    text-decoration: none;
+}
+
+.article {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.05), #ffffff);
+    transition: all 0.3s ease;
+}
+
+.article:hover {
+    scale: 1.2;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+    padding: 12px;
+    background: #ffffff;
+}
+
+.article img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+
+.article h4 {
+    text-overflow: ellipsis;
+    /* white-space: nowrap; */
+    text-align: right;
+    padding-inline: 1rem;
+}
+
+.article .price {
+    color: orange;
+    font-weight: 400;
+    text-align: right;
+    padding-inline: 1rem;
+}
