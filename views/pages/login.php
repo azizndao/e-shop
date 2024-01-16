@@ -14,6 +14,7 @@ $data = $_POST;
 
 $errors = [];
 
+// new password
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $errors = User::login($data);
     if (empty($errors)) {

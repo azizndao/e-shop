@@ -1,0 +1,13 @@
+form {
+    max-width: 512px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-inline: auto;
+    margin-top: 56px;
+}
+
+form button {
+    align-self: center;
+    width: 50%;
+}

@@ -14,20 +14,20 @@ trait Authenticable
     /**
      * Validates user credentials and logs in the user.
      *
-     * @param string[] $credentials The user's login credentials.
+     * @param string[] $form The user's login credentials.
      * @return string[] Returns an array containing errors if the credentials are invalid, or an empty array if the login is successful.
      */
-    public static function login(array $credentials): array
+    public static function login(array $form): array
     {
-        $validator = new LoginRequestValidator($credentials);
+        $validator = new LoginRequestValidator($form);
 
         if (!$validator->isValid()) {
             return $validator->getErrors();
         }
 
-        $user = self::getByEmail($credentials['email']);
-        if ($user != null && password_verify($credentials['password'], $user->password)) {
-            $_SESSION['user'] = (array) $user;
+        $user = self::getByEmail($form['email']);
+        if ($user != null && password_verify($form['password'], $user->password)) {
+            $_SESSION['user'] = (array)$user;
             return [];
         }
         return ['error' => 'Invalid credentials'];
@@ -53,36 +53,39 @@ trait Authenticable
 
     public function tryUpdateProfile(array $credentials): array
     {
+
         $validator = new UpdateProfileRequestValidator($_POST);
+        $validator->validate();
+        if (!$validator->isValid()) {
+            return $validator->getErrors();
+        }
+        $this->first_name = $credentials['first_name'];
+        $this->last_name = $credentials['last_name'];
+        $this->email = $credentials['email'];
+        $this->mobile = $credentials['mobile'];
+
+        $_SESSION['user'] = (array)$this->update();
+        return [];
+    }
+
+    public function tryUpdatePassword(array $credentials): array
+    {
+        $validator = new UpdatePasswordRequestValidator($credentials);
         $validator->validate();
 
         if (!$validator->isValid()) {
             return $validator->getErrors();
         }
 
-        $this->first_name = $credentials['first_name'] ?? $this->first_name;
-        $this->last_name = $credentials['last_name'] ?? $this->last_name;
-        $this->email = $credentials['email'] ?? $this->email;
-        $this->phone = $credentials['phone'] ?? $this->phone;
+        $validated = $validator->getValidated();
 
-        $this->update();
+        if (!password_verify($validated['password'], $this->password)) {
+            return ['password' => 'Mot de passe invalide'];
+        }
+
+        $this->updatePassword(currentPassword: $this->password, newPassword: $validated['new-password']);
+
         return [];
-    }
-
-    public function tryUpdatePassword(array $credentials): array
-    {
-        $validator = new UpdatePasswordRequestValidator($_POST);
-        $validator->validate();
-
-        if (!$validator->isValid()) {
-            return $validator->getErrors()();
-        }
-
-        if (!password_verify($$credentials['password'], $this->password)) {
-            return ['error' => 'Mot de passe invalide'];
-        }
-
-        $this->update();
     }
 
     /**
@@ -100,7 +103,7 @@ trait Authenticable
      */
     public static function getCurrent(): ?User
     {
-        return isset($_SESSION['user']) ? User::fromArray((array) $_SESSION['user']) : null;
+        return isset($_SESSION['user']) ? User::fromArray((array)$_SESSION['user']) : null;
     }
 
     /**

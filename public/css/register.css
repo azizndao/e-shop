@@ -30,9 +30,3 @@ button[type="submit"] {
     align-self: center;
     width: 50%;
 }
-
-.input-error {
-    color: #ff3838;
-    font-weight: 600;
-    font-size: 0.7rem;
-}

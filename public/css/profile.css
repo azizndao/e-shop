@@ -48,3 +48,12 @@
 .destroy__account > button {
     max-width: 200px;
 }
+
+
+.error-message {
+    background-color: rgba(248, 68, 68, 0.25);
+    padding: 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 0.24rem;
+}

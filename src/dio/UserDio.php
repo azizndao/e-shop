@@ -6,6 +6,9 @@ use App\models\User;
 use App\utils\DB;
 use PDO;
 
+/**
+ * Ici nous avons les methodes qui nous permettent d'ajouter, de modifier, de supprimer et de lister les marques
+ */
 trait UserDio
 {
 
@@ -49,12 +52,13 @@ trait UserDio
     {
         $this->updated_at = date('Y-m-d H:i:s');
         $statement = DB::getPDo()->prepare(
-            "UPDATE users SET first_name = :first_name, last_name = :last_name, email = :email, updated_at = :updated_at WHERE id = :id"
+            "UPDATE users SET first_name = :first_name, last_name = :last_name, email = :email, mobile = :mobile, updated_at = :updated_at WHERE id = :id"
         );
         $statement->execute([
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
             'email' => $this->email,
+            'mobile' => $this->mobile,
             'updated_at' => $this->updated_at,
             'id' => $this->id
         ]);
@@ -63,13 +67,13 @@ trait UserDio
 
     public function updatePassword(string $currentPassword, $newPassword): User
     {
-        if (password_verify($currentPassword, $this->password)) {
+        if (password_verify($newPassword, $currentPassword)) {
             $this->password = password_hash($newPassword, PASSWORD_DEFAULT);
             $statement = DB::getPDo()->prepare(
                 "UPDATE users SET password = :password, updated_at = :updated_at WHERE id = :id"
             );
             $statement->execute([
-                'password' => password_hash($this->password, PASSWORD_DEFAULT),
+                'password' => password_hash($newPassword, PASSWORD_DEFAULT),
                 'updated_at' => $this->updated_at,
                 'id' => $this->id
             ]);

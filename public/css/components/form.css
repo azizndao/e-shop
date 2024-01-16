@@ -10,7 +10,8 @@
     }
 
     input,
-    select {
+    select,
+    textarea {
         border: 1.5px solid rgba(25, 29, 33, 0.45);
         border-radius: 0.45rem;
         padding: 0.75rem 1rem;
@@ -31,4 +32,10 @@
         font-weight: 600;
         opacity: 0.95;
     }
+}
+
+.input-error {
+    color: #ff3838;
+    font-weight: 600;
+    font-size: 0.7rem;
 }

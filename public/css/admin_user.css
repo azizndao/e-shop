@@ -1,0 +1,21 @@
+.articles {}
+
+
+.articles table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 20px;
+}
+
+.articles table th,
+.articles table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.articles table img {
+    height: 100px;
+    width: 100px;
+}

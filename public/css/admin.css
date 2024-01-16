@@ -1,0 +1,59 @@
+.content {}
+
+
+.content table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 20px;
+}
+
+.content table th,
+.content table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.content table img {
+    height: 100px;
+    width: 100px;
+}
+
+.tabbar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    height: 56px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding-inline: 16px;
+}
+
+.tabbar .spacer{
+    flex: 1;
+}
+
+.tabbar a {
+    padding: 0 34px;
+    color: currentColor;
+    text-decoration: none;
+}
+
+table td {
+    min-width: 80px;
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+}
+
+.actions a {
+    display: inline;
+}
+
+table .name {
+    width: 100%;
+}

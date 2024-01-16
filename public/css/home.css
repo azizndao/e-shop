@@ -49,7 +49,7 @@
 }
 
 .carousel-slider {
-    /* margin-top: -56px; */
+     margin-top: -56px;
     list-style: none;
     display: flex;
     flex-direction: row;

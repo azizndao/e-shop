@@ -1,0 +1,12 @@
+.container form {
+    max-width: 720px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.container button {
+    width: 30%;
+    align-self: center;
+}

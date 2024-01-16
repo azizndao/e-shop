@@ -2,7 +2,7 @@
 
 use App\clazz\PageMetadata;
 use App\models\User;
-use App\validators\UpdatePasswordRequestValidator;
+
 
 $user = User::getCurrent();
 
@@ -13,22 +13,23 @@ if ($user == null) {
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $action = $_POST['action'];
-
     if ($action == 'logout') {
         $user->logout();
         header('Location: /login?redirect=/profile');
         exit();
     } else if ($action == 'update-profile') {
-        $updatePrifileErrors = $user->tryUpdateProfile();
+        $updateProfileErrors = $user->tryUpdateProfile($_POST);
     } else if ($action == 'update-password') {
         $updatePasswordErrors = $user->tryUpdatePassword($_POST);
+        User::logout();
+        header('Location: /login');
     }
 }
 
 $metadata = new PageMetadata(
     title: 'profile',
     description: '',
-    css: ['/css/profile.css']
+    css: ['/css/profile.css', '/css/components/form.css'],
 );
 
 ?>

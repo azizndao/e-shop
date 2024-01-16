@@ -7,6 +7,9 @@
     border: none;
     cursor: pointer;
     transition: transform 0.15s;
+    text-decoration: none;
+    color: currentColor;
+    text-align: center;
 
     &:hover {
         transform: scale(1.05);

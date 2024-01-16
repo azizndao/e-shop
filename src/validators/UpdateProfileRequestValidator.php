@@ -2,8 +2,6 @@
 
 namespace App\validators;
 
-use App\models\User;
-
 /**
  * This class is used to validate the registration request
  */
@@ -27,8 +25,6 @@ class UpdateProfileRequestValidator extends RequestValidator
 
         if (empty($cdt['email'])) {
             $this->setError('email', '* Requise');
-        } else if (User::getByEmail($cdt['email'] ?? "") !== null) {
-            $this->setError('email', 'Email already registered');
         } else {
             $this->setValidated('email', $cdt['email']);
         }

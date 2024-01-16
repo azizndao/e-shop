@@ -44,10 +44,10 @@ $metadata = new PageMetadata(
 
     <section class="showcases">
         <article class="showcase">
-            <img src="/images/slide-1.jpeg" alt="" />
+            <img src="/images/314.webp" alt="" />
         </article>
         <article class="showcase">
-            <img src="/images/slide-2.png" alt="" />
+            <img src="/images/412.webp" alt="" />
         </article>
     </section>
 

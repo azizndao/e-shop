@@ -4,38 +4,37 @@ namespace App\dio;
 
 use App\models\Category;
 use App\utils\DB;
-use DateTime;
 
+/**
+ * Ici nous avons les methodes qui nous permettent d'ajouter, de modifier, de supprimer et de lister les marques
+ */
 trait CategoryDio
 {
 
     public function save(): Category
     {
         $statement = DB::getPDO()->prepare(
-            "INSERT INTO categories (name, image, created_by) VALUES (:name, :image_url, :created_by)"
+            "INSERT INTO categories (name, image, slug) VALUES (:name, :image, :slug)g"
         );
         $statement->execute([
             'name' => $this->name,
-            'image_url' => $this->image_url,
-            'created_by' => $this->created_by
+            'image' => $this->image,
+            'slug' => $this->slug
         ]);
-        $statement = DB::getPDO()->prepare("SELECT * FROM categories WHERE id = ?");
-        $statement->execute([$this->getPDO()->lastInsertId()]);
-        return $statement->fetchObject(Category::class);
+        return $this;
     }
 
 
     public function update(): Category
     {
-        $this->updated_at = new DateTime();
         $statement = DB::getPDO()->prepare(
-            "UPDATE categories SET name = :name, image = :image_url, updated_at = :updated_at WHERE id = :id"
+            "UPDATE categories SET name = :name, image = :image, slug = :slug WHERE id = :id"
         );
         $statement->execute([
             'id' => $this->id,
             'name' => $this->name,
-            'image_url' => $this->image_url,
-            'updated_at' => $this->updated_at
+            'image' => $this->image,
+            'slug' => $this->slug,
         ]);
         return $this;
     }

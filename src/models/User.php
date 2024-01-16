@@ -14,7 +14,7 @@ final class User
     public ?string $first_name;
     public ?string $last_name;
     public ?string $email;
-    public ?string $phone;
+    public ?string $mobile = null;
     public ?string $password;
     public string $created_at;
     public ?string $updated_at;
