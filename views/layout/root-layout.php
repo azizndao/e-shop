@@ -22,11 +22,11 @@ $user = User::getCurrent();
     </title>
     <meta name="description" content="<?= $metadata->getDescription() ?? 'An e-commerce website' ?>">
     <link rel="stylesheet" href="/css/main.css">
-    <?php foreach ($metadata->getCss() as $css) : ?>
+    <?php foreach ($metadata->getCss() as $css): ?>
         <link rel="stylesheet" href="<?= $css ?>">
     <?php endforeach; ?>
     <script src="/js/main.js" defer type="module"></script>
-    <?php foreach ($metadata->getScripts() as $script) : ?>
+    <?php foreach ($metadata->getScripts() as $script): ?>
         <script src="<?= $script ?>" defer type="module"></script>
     <?php endforeach; ?>
 
@@ -38,15 +38,19 @@ $user = User::getCurrent();
             <a href="/" class="logo">E-Shop</a>
 
             <aside>
-                <?php if (User::isLogIn()) : ?>
+                <?php if (User::isLogIn()): ?>
                     <a href="/profile">
                         Mon espace
                     </a>
                     <a href="/panier">Mon panier</a>
-                    <?php if (User::isAdmin()) : ?>
+                    <?php if (User::isAdmin()): ?>
                         <a href="/admin">Admin</a>
                     <?php endif ?>
-                <?php else : ?>
+                    <form method="post">
+                        <input type="hidden" name="action" value="logout">
+                        <button class="btn btn-outline-danger">Se deconnecter</button>
+                    </form>
+                <?php else: ?>
                     <a href="/register" class="btn btn-outline-danger sign-up">S'inscrire</a>
                     <a href="/login" class="btn btn-primary sign-in">Se connecter</a>
                 <?php endif ?>
